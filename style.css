@@ -1,0 +1,98 @@
+.instr_example_outer {
+    text-align: center;
+    margin: 0 0 10px 0;
+}
+
+.instr_example {
+    /* background-color: rgb(255, 251, 235); */
+    display: inline-block;
+    padding: 15px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 0px;
+}
+
+.instr_example table {
+    background-color: rgb(255, 253, 244);
+    display: inline-block;
+    vertical-align: top;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.instr_example table:first-child {
+    margin-right: 25px;
+}
+
+.instr_example table:nth-of-type(2) tr:nth-child(3) td:nth-child(2) {
+    color: rgb(0, 125, 0);
+    font-weight: bold;
+}
+
+.instr_example table td, th {
+    font-size: 20px;
+    padding: 5px 10px;
+}
+
+.instr_example table tr td:nth-child(1) {
+    padding: 5px 0px 5px 10px;
+}
+
+.instr_example button {
+    display: block;
+    margin: 10px auto 0;
+    font-size: 20px;
+}
+
+.instr_example table img {
+    height: 20px;
+}
+
+#content {
+    display: block;
+    max-width: 800px;
+    padding: 10px 20px;
+    margin: 20px auto;
+    border-width: 3px;
+    border-radius: 4px;
+    border-color: #AAAAAA;
+    border-style: solid;
+    background-color: #EEEEEE;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #CCCCCC;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h1 {
+    margin: 0 0 10px 0;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+}
+
+h2 {
+    margin: 15px 0 15px 0;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+h3 {
+    margin: 0 0 10px 0;
+    font-weight: bold;
+    font-size: 24px;
+    padding-left: 25px;
+}
+
+p {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    padding-left: 25px;
+}
+
+hr {
+    margin-left: 25px;
+}

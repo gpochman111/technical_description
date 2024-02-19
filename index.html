@@ -1,0 +1,151 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id = "content">
+            <h1>What Is Self-Modifying Code?</h1>
+            <h2>What is it?</h2>
+            <p>
+                A computer program is created when a compiler converts code written in a programming language into machine code. In a typical program, this machine code will remain constant during runtime (the duration that a processor is running the program). However, self-modifying code is able to deliberately modify itself.
+                <br>
+                <br>
+                As an example, let's consider a hypothetical processor running a program to sum all numbers from 1 to n. A typical program might look like this (press "Step" to run the current instruction):
+            </p>
+            <div class = "instr_example_outer">
+                <div class = "instr_example" id = "instr_example_1">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Address</th>
+                            <th>Instruction</th>
+                        </tr>
+                        <tr>
+                            <td><img src="arrow.png"></td>
+                            <td>0x0000</td>
+                            <td>Add 1 to register Y</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>0x0004</td>
+                            <td>Add register Y to register X</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>0x0008</td>
+                            <td>Go to 0x0000</td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <th colspan=2>
+                                Registers
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>PC</td>
+                            <td>0x0000</td>
+                        </tr>
+                        <tr>
+                            <td>X</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>Y</td>
+                            <td>0</td>
+                        </tr>
+                    </table>
+                    <br>
+                    <button onclick="update_example_1()">Step</button>
+                </div>
+            </div>
+            <p>
+                A program that uses self-modifying code to achieve the same result might look like this:
+            </p>
+            <div class = "instr_example_outer">
+                <div class = "instr_example" id = "instr_example_2">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Address</th>
+                            <th>Instruction</th>
+                        </tr>
+                        <tr>
+                            <td><img src="arrow.png"></td>
+                            <td>0x0000</td>
+                            <td>Add 1 to register X</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>0x0004</td>
+                            <td>Modify instruction 0x0000</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>0x0008</td>
+                            <td>Go to 0x0000</td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <th colspan=2>
+                                Registers
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>PC</td>
+                            <td>0x0000</td>
+                        </tr>
+                        <tr>
+                            <td>X</td>
+                            <td>0</td>
+                        </tr>
+                    </table>
+                    <br>
+                    <button onclick="update_example_2()">Step</button>
+                </div>
+            </div>
+            <p>
+                The second example works by modifying the address at 0x0000 once per loop to change the value added to register X. Every time our hypothetical processor runs that instruction, it's different.
+            </p>
+            
+            <h2>
+                Why should I use it?
+            </h2>
+            <h3>It can be more performant</h3>
+            <p>Self-modifying code can allow for some clever optimizations. Adding self-modifying code as an option can only improve a program's highest theoretical performance.</p>
+            <h3>It can use less memory</h3>
+            <p>Self-modifying code can reduce memory usage in low-power applications. For example, instead of storing a value to decide the behavior of a conditional statement, you can modify the statement itself.</p>
+            <h3>It's great for obfuscation</h3>
+            <p>It's much harder to figure out how a program works if it uses self-modifying code, which can make attacks against your program much more expensive.</p>
+            <hr>
+            <p>Generally, self-modifying code can be used to optimize programs for low-power processors like microcontrollers. If optimization isn't necessary, it can still be used to add another layer of defense against anyone trying to decompile your code.</p>
+
+            <h2>
+                Why shouldn't I use it?
+            </h2>
+            <h3>It's dangerous</h3>
+            <p>Self-modifying code is hard to reason about, and the consequences for getting it wrong are harsh. If something goes wrong, you can end up with bugs or security vulnerabilities that are almost impossible to fix.</p>
+            <h3>It's not portable</h3>
+            <p>Because you're modifying machine code, your code won't work on a different architecture with different instructions. You'll have to write implementation for every processor you want to support.</p>
+            <h3>It can be slower</h3>
+            <p>Modern computers use techniques like caching and speculative execution to run processes faster. These assume that instructions are constant, so self-modifying code may make a program run slower by breaking that assumption.</p>
+            <hr>
+            <p>All three of these downsides make self-modifying code a bad choice for modern computers. In practice, implementing it in a modern program would be risking devastating vulnerabilities for miniscule performance gains. However, these downsides may be acceptable in very specific applications like embedded systems.</p>
+
+            <h2>
+                Can I use it?
+            </h2>
+            <p>Processors can generally be split into two categories, Harvard and Von Neumann architectures. Von Neumann architectures, which store instructions and data in the same memory pool, allow for self-modifying code. Harvard architectures, however, store instructions in separate, read-only memory for faster access. Because instructions are read-only in Harvard processors, you can't write self-modifying code for them. Unfortunately, many microcontrollers and other low-power devices which would benefit most from self-modifying code are Harvard-based.</p>
+
+            <h2>
+                Who's using it?
+            </h2>
+            <p>
+                In the modern era, the greatest benefit of self-modifying code is obfuscation. In practice, it's mostly used to hide the purpose of a program from the end user, and you'd be correct for thinking that sounds malicious. Because antivirus programs often work by comparing programs to a database of known malware, self-modifying malware can avoid detection by constantly changing its own code to be semantically different but functionally the same. Self-modifying code is used legitimately in niche cases, but you should be careful to evaluate if it's worth the problems it risks.
+            </p>
+        </div>
+    </body>
+    <script src="ex_1.js"></script>
+    <script src="ex_2.js"></script>
+</html>
