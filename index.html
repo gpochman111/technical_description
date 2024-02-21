@@ -116,22 +116,22 @@
             <p>Self-modifying code can allow for some clever optimizations. Adding self-modifying code as an option can only improve a program's highest theoretical performance.</p>
             <h3>It can use less memory</h3>
             <p>Self-modifying code can reduce memory usage in low-power applications. For example, instead of storing a value to decide the behavior of a conditional statement, you can modify the statement itself.</p>
-            <h3>It's great for obfuscation</h3>
-            <p>It's much harder to figure out how a program works if it uses self-modifying code, which can make attacks against your program much more expensive.</p>
-            <hr>
+            <h3>It's a good obfuscation technique</h3>
+            <p>It's harder to figure out how a program works if it uses self-modifying code, which can make attacks against your program more expensive.</p>
+            <br>
             <p>Generally, self-modifying code can be used to optimize programs for low-power processors like microcontrollers. If optimization isn't necessary, it can still be used to add another layer of defense against anyone trying to decompile your code.</p>
 
             <h2>
                 Why shouldn't I use it?
             </h2>
             <h3>It's dangerous</h3>
-            <p>Self-modifying code is hard to reason about, and the consequences for getting it wrong are harsh. If something goes wrong, you can end up with bugs or security vulnerabilities that are almost impossible to fix.</p>
+            <p>Self-modifying code is hard for humans to reason about, and the consequences for getting it wrong are harsh. If something goes wrong, you can end up with bugs or security vulnerabilities that tough to fix.</p>
             <h3>It's not portable</h3>
             <p>Because you're modifying machine code, your code won't work on a different architecture with different instructions. You'll have to write implementation for every processor you want to support.</p>
             <h3>It can be slower</h3>
-            <p>Modern computers use techniques like caching and speculative execution to run processes faster. These assume that instructions are constant, so self-modifying code may make a program run slower by breaking that assumption.</p>
-            <hr>
-            <p>All three of these downsides make self-modifying code a bad choice for modern computers. In practice, implementing it in a modern program would be risking devastating vulnerabilities for miniscule performance gains. However, these downsides may be acceptable in very specific applications like embedded systems.</p>
+            <p>Modern computers use techniques including caching and speculative execution to run processes faster. These assume that instructions are constant, so self-modifying code may make a program run slower as a result of breaking that assumption.</p>
+            <br>
+            <p>All three of these downsides make self-modifying code a bad choice for modern computers. In practice, implementing it in a modern program would be risking security vulnerabilities for insignificant performance gains. However, these downsides may be acceptable in very specific applications like embedded systems.</p>
 
             <h2>
                 Can I use it?
@@ -142,7 +142,7 @@
                 Who's using it?
             </h2>
             <p>
-                In the modern era, the greatest benefit of self-modifying code is obfuscation. In practice, it's mostly used to hide the purpose of a program from the end user, and you'd be correct for thinking that sounds malicious. Because antivirus programs often work by comparing programs to a database of known malware, self-modifying malware can avoid detection by constantly changing its own code to be semantically different but functionally the same. Self-modifying code is used legitimately in niche cases, but you should be careful to evaluate if it's worth the problems it risks.
+                In the modern era, the greatest benefit of self-modifying code is obfuscation. In practice, it's mostly used to hide the purpose of a program from the end user, often for malicious purposes. Because antivirus programs often work by comparing programs to a database of known malware, self-modifying malware can avoid detection by constantly changing its own code to be semantically different but functionally the same. Self-modifying code is used legitimately in niche cases, but you should be careful to evaluate if it's worth the problems it risks.
             </p>
         </div>
     </body>
