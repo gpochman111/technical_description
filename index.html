@@ -7,7 +7,7 @@
             <h1>What Is Self-Modifying Code?</h1>
             <h2>What is it?</h2>
             <p>
-                A computer program is created when a compiler converts code written in a programming language into machine code. In a typical program, this machine code will remain constant during runtime (the duration that a processor is running the program). However, self-modifying code is able to deliberately modify itself.
+                A computer program is created when a compiler converts code written in a programming language into machine code. In a typical program, this machine code will remain constant during runtime (the period of time when a processor is running the program). However, self-modifying code is able to deliberately modify itself.
                 <br>
                 <br>
                 As an example, let's consider a hypothetical processor running a program to sum all numbers from 1 to n. A typical program might look like this (press "Step" to run the current instruction):
@@ -113,7 +113,7 @@
                 Why should I use it?
             </h2>
             <h3>It can be more performant</h3>
-            <p>Self-modifying code can allow for some clever optimizations. Adding self-modifying code as an option can only improve a program's highest theoretical performance.</p>
+            <p>Adding self-modifying code as an option can only improve a program's highest theoretical performance. It unlocks specialized optimizations, such as replacing jump tables and reducing the instruction count in tight loops.</p>
             <h3>It can use less memory</h3>
             <p>Self-modifying code can reduce memory usage in low-power applications. For example, instead of storing a value to decide the behavior of a conditional statement, you can modify the statement itself.</p>
             <h3>It's a good obfuscation technique</h3>
@@ -136,13 +136,13 @@
             <h2>
                 Can I use it?
             </h2>
-            <p>Processors can generally be split into two categories, Harvard and Von Neumann architectures. Von Neumann architectures, which store instructions and data in the same memory pool, allow for self-modifying code. Harvard architectures, however, store instructions in separate, read-only memory for faster access. Because instructions are read-only in Harvard processors, you can't write self-modifying code for them. Unfortunately, many microcontrollers and other low-power devices which would benefit most from self-modifying code are Harvard-based.</p>
+            <p>Processors can generally be split into two categories, Harvard and Von Neumann architectures. Von Neumann architectures, a category of processors which store instructions and data in the same memory pool, allow for self-modifying code. Harvard architectures, however, store instructions in separate, read-only memory for faster access. Because instructions are read-only in Harvard processors, you can't write self-modifying code for them. Unfortunately, many microcontrollers and other low-power devices which would benefit most from self-modifying code are Harvard-based.</p>
 
             <h2>
                 Who's using it?
             </h2>
             <p>
-                In the modern era, the greatest benefit of self-modifying code is obfuscation. In practice, it's mostly used to hide the purpose of a program from the end user, often for malicious purposes. Because antivirus programs often work by comparing programs to a database of known malware, self-modifying malware can avoid detection by constantly changing its own code to be semantically different but functionally the same. Self-modifying code is used legitimately in niche cases, but you should be careful to evaluate if it's worth the problems it risks.
+                In the modern era, the greatest benefit of self-modifying code is obfuscation. In practice, it's mostly used to hide the purpose of a program from the end user, often for malicious purposes. Because antivirus programs often work by comparing programs to a database of known malware, self-modifying malware can avoid detection by constantly changing its own code to be semantically different but functionally the same. Conversely, legitimate companies can use self-modifying code to make it more difficult for bad actors to decompile their programs to find and abuse vulnerabilities. Outside of obfuscation self-modifying code has its uses, especially in performance-critical code where every instruction counts, but you should be careful to evaluate if it's worth the problems it risks.
             </p>
         </div>
     </body>
